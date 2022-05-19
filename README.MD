@@ -24,9 +24,9 @@ pip install -r requirements.txt
 **Configure required variables:**
 
 Export your Meraki API key using the command.
-
+```
 export MERAKI_DASHBOARD_API_KEY=093b24e85df15a3e66f1fc359f4c48493eaa1b73
-
+```
 
 ## Usage
 
