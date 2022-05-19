@@ -1,0 +1,61 @@
+{% extends "masterPage.html" %}
+
+{% set last_update = namespace(value="Never") %}
+
+{% block content %}
+<div class="row">
+    
+    <!-- Left Rail -->
+    {% include "menu.html" %}
+
+    <!-- Middle + Right Rail -->
+    <div class="col-9 col-xl-10 col-md-9">
+        <div class="section">
+            <div class="flex-center-vertical">
+                <h2>My Organizations
+                    <!--CUSTOMIZE: Add headline of page here-->
+                </h2>
+            </div>
+
+            <form action="/tablemenu" method="POST">
+
+                <div class="responsive-table">
+                    <!--CUSTOMIZE: Change table content as needed -->
+                    <table class="table table--lined table--selectable table">
+                <thead>
+                    <tr>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span class="checkbox__input"></span>
+                            </label>
+                        </th>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for org in orgs %}
+                    <tr>
+                        {% for key, value in org.items() %}
+                            {% if key == 'id' %}
+                            <td>
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkbox__input"></span>
+                                </label>
+                            </td>
+                            <td class="text-center">{{ value }}</td>
+                            {% endif %}
+                            {% if key == 'name' %}
+                            <td class="text-center">{{ value }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%  endblock %}
